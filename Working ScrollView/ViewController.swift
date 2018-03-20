@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         card.append("Card 2")
         card.append("Card 2")
         card.append("Card 2")
-        scrollView.backgroundColor = .red
+        //scrollView.backgroundColor = .red
         scrollView.clipsToBounds = false
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -33,10 +33,14 @@ class ViewController: UIViewController {
         
         for x in 0...card.count {
             let cardView = UIView()
-            cardView.backgroundColor = .black
             cardView.layer.cornerRadius = 5
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.scrollView.frame.size.width, height: self.scrollView.frame.size.height))
+            let image = UIImage(named:"image_card")
+            imageView.image = image
+            imageView.contentMode = .scaleAspectFit
+            cardView.addSubview(imageView)
             
-            cardView.frame = CGRect(x: contendWidth + 5, y: 10, width: self.view.frame.size.width - 110, height: 200)
+            cardView.frame = CGRect(x: contendWidth + 5, y: 0, width: self.view.frame.size.width - 110, height: 250)
             self.views.append(cardView)
             scrollView.addSubview(cardView)
             contendWidth += self.view.frame.size.width - 100
