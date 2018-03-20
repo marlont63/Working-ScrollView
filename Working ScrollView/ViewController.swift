@@ -61,7 +61,14 @@ extension ViewController : UIScrollViewDelegate {
         
         let pageWidth = scrollView.frame.size.width
         let fractionalPage = scrollView.contentOffset.x / pageWidth
-        let  page = Int(fractionalPage.rounded())
+        var  page = Int(fractionalPage.rounded())
+        
+        if page < 0 {
+            page = 0
+        }else if page == self.views.count {
+            page = self.views.count - 1
+        }
+        
         
         if page == 0 {
             UIView.animate(withDuration: 0.2, animations: {
